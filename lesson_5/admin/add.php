@@ -6,4 +6,3 @@ require __DIR__ . '/../autoload.php';
 $ctrl = new AddAdmin();
 $ctrl();
 
-//$ctrl->actionAddAdmin();

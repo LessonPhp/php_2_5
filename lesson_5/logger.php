@@ -8,8 +8,3 @@ $view = new \App\View();
 $controller = new \App\Controllers\Logger();
 $controller->action('Logger');
 
-// вывод через view
-/*
-$view->logger = \App\Logger::getLog();
-var_dump($logger);
-*/

@@ -19,5 +19,3 @@ try {
 }
 
 
-//$ctrl->actionAdminIndex();
-

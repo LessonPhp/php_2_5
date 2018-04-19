@@ -20,27 +20,29 @@ class Article extends Model
      * @return bool|null
      */
 
-    public function __get($name) {
-        if(isset($this->author_id)) {
-            $authors = Author::findByAuthorId($this->author_id);
-            return $authors;
+    // исправила методы __get() и __isset()
+    public function __get($name)
+    {
+        if ('author' === $name) {
+            if (isset($this->author_id)) {
+                $author = Author::findById($this->author_id);
+                return $author;
+            }
+            return null;
         }
-        return null;
     }
 
-    /**
-     * @param $name
-     * @return bool|null
-     */
 
     public function __isset($name)
     {
-        if(!empty($this->author_id)) {
-            return Author::findByAuthorId($this->author_id);
+        if ('author' === true) {
+            if (!empty($this->author_id)) {
+                $author =  Author::findById($this->author_id);
+                return $author;
+            }
+            return null;
         }
-        return null;
     }
-
     /**
      * @return array|bool
      */

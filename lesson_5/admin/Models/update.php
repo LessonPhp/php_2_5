@@ -19,6 +19,5 @@ if(isset($_POST['update'])) {
     $article->title = $title;
     $article->content = $content;
     $article->author_id = $author_id;
-    $article->update();
-    var_dump($article);
+    $article->save();
 }

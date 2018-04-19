@@ -7,12 +7,6 @@ trait TraitView
 {
     protected $data = [];
 
-    /*
-    public function assign($name, $value)
-    {
-        $this->data[$name] = $value;
-    }*/
-
     /**
      * @param $name
      * @param $value

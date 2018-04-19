@@ -8,11 +8,8 @@
     <title>Главная страница</title>
 </head>
 <body>
-<!--<a href="/lesson_5/home_work1/admin/index.php"><h3 style="text-align: center;">Админ-панель</h3></a>-->
 <a href="/lesson_5/home_work1/admin/index.php?name=Admin"><h3 style="text-align: center;">Админ-панель</h3></a>
 <?php
-
-//foreach ($this->data['articles'] as $article) {
 
 foreach ($this->articles as $article) : ?>
     <h1 style="text-align: center;"><?php echo $article->title; ?></h1>

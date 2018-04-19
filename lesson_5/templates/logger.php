@@ -8,10 +8,10 @@
     <title>Здесь лог ошибок</title>
 </head>
 <body>
-<!--<form method="post" action="/lesson_5/home_work1/logger.php">
+<form method="post" action="/lesson_5/home_work1/logger.php">
     <input type="text" name="login">
     <input type="text" name="password">
     <button type="submit">Вход</button>
-</form>-->
+</form>
 </body>
 </html>

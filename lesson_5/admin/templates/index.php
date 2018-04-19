@@ -9,7 +9,6 @@
 </head>
 <body>
 <h3 style="text-align: center;">Админ-панель</h3>
-<!--<a href="/lesson_5/home_work1/admin/add.php"><p style="text-align: center;">Добавить новость</p></a><br>-->
 <a href="/lesson_5/home_work1/admin/add.php?name=AddAdmin"><p style="text-align: center;">Добавить новость</p></a><br>
 <?php
 foreach ($this->articles as $article) : ?>
@@ -20,7 +19,6 @@ foreach ($this->articles as $article) : ?>
         <?php
     }
         ?>
-    <!--<a href="/lesson_5/home_work1/admin/update.php?id=<?php //echo $article->id; ?>">-->
     <a href="/lesson_5/home_work1/admin/update.php?name=Admin&id=<?php echo $article->id; ?>">
         <p style="text-align: center;">Обновить новость</p></a><br>
     <a href="/lesson_5/home_work1/admin/delete.php?id=<?php echo $article->id; ?>">
@@ -28,7 +26,6 @@ foreach ($this->articles as $article) : ?>
     <?php
         endforeach;
     ?>
-<!--<a href="/lesson_5/home_work1/index.php"><p style="text-align: center;">Назад на главную</p></a>-->
 <a href="/lesson_5/home_work1/?name=Index"><p style="text-align: center;">Назад на главную</p></a>
 </body>
 </html>

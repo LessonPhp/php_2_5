@@ -12,21 +12,8 @@ class Db
 
     public function __construct()
     {
-/*
-        $config = (include __DIR__ . '/../config.php')['db'];
-
-        $this->dbh = new \PDO(
-            'mysql:host=' .$config['host'] . ';dbname=' . $config['dbname'],
-            $config['user'],
-            $config['password']);
-*/
         $config = new \App\Config();
-        //echo $config->data['db']['host'];
-        //echo $config->data['db']['dbname'];
-        //echo $config->data['db']['user'];
-        //echo $config->data['db']['password'];
-
-        // исклюсчение к 1 заданию
+        // исключение к 1 заданию
         try {
             $this->dbh = new \PDO(
                 'mysql:host='. $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'],

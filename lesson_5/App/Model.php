@@ -20,12 +20,6 @@ abstract class Model
         return $db->query($sql,
             [],
             static::class);
-
-        if(!empty($result)) {
-            return $result;
-        } else {
-            return false;
-        }
     }
 
     /**

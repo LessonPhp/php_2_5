@@ -8,6 +8,5 @@ if(isset($_POST['add'])) {
     $article->title = $title;
     $article->content = $content;
     $article->author_id = $author_id;
-    $article->insert();
-    var_dump($article);
+    $article->save();
 }

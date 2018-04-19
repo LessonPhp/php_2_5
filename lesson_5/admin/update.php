@@ -7,4 +7,3 @@ require __DIR__ . '/../autoload.php';
 $ctrl = new UpdateAdmin();
 $ctrl();
 
-//$ctrl->actionUpdateAdmin();
