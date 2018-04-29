@@ -8,7 +8,7 @@ $db = new Db();
 
 // вариант 1 с  использованием update()
 
-$article = \App\Models\Article::findByIdArticle(46);
+$article = \App\Models\Article::findById(46);
 
 var_dump($article);
 
@@ -27,7 +27,7 @@ var_dump($article);
 
 // вариант 2 с  использованием save()
 /*
-$article = \App\Models\Article::findByIdArticle(46);
+$article = \App\Models\Article::findById(46);
 
 var_dump($article);
 

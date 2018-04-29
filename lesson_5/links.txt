@@ -1,14 +1,5 @@
-﻿http://profitphp2.local/lesson_5/home_work1/index.php?ctrl=Index&action=Index
+﻿http://profitphp2.local/lesson_5/home_work/?ctrl=Index&action=Index
 
-
-http://profitphp2.local/lesson_5/home_work1/index.php?ctrl=Index&action=Article&id=10
-
-
-
-ссылка для админ-панели
-
-
-http://profitphp2.local/lesson_5/home_work1/admin/index.php?name=Admin
-
+http://profitphp2.local/lesson_5/home_work/?ctrl=Index&action=Article&id=21
 
 

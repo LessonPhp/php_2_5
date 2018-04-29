@@ -17,7 +17,7 @@ class MultiException extends \Exception
         return $this->errors;
     }
 
-        public function empty()
+    public function empty()
     {
         return empty($this->errors);
     }

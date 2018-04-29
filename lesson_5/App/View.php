@@ -22,11 +22,11 @@ class View implements \Countable
 
     /**
      * @param $template
-     * @return mixed
+     * @return string
      */
     public function display($template)
     {
-        return $this->render($template);
+        echo $this->render($template);
     }
 
     public function count()

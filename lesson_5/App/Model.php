@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\Error404Exception;
 use App\Exceptions\MultiException;
 use App\Models\Article;
 
@@ -12,19 +13,27 @@ abstract class Model
 
     /**
      * @return array|bool
+     * @throws Error404Exception
      */
     public static function findAll()
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE;
-        return $db->query($sql,
+        $result =  $db->query($sql,
             [],
             static::class);
+
+        // задание 3
+        if(empty($result)) {
+            throw new Error404Exception('Новости не найдены');
+        }
+        return $result;
     }
 
     /**
      * @param $id
      * @return null
+     * @throws Error404Exception
      */
     public static function findById($id)
     {
@@ -35,35 +44,38 @@ abstract class Model
             static::class
         );
 
-        // исправила ошибку с прошлого урока
-        return $result ? $result[0] : null;
+        // задание 3
+        if(empty($result)) {
+            throw new Error404Exception('Запрашиваемая вами новость не найдена');
+        }
 
+        return $result ? $result[0] : null;
     }
 
+    // задание 4
     /**
      * @param array $data
      * @throws MultiException
      */
-    // задание 3
     public function fill(array $data)
     {
         $errors = new MultiException();
-        foreach ($data as $key => $val) {
+        foreach($data as $key => $value) {
             try {
-                $this->$key = $val;
+                $this->$key = $value;
             } catch (\Exception $e) {
                 $errors->add($e);
             }
         }
-        if (!$errors->empty()) {
+
+        if(!$errors->empty()) {
             throw $errors;
         }
     }
-    // сделали на уроке
+
     public function insert()
     {
         $fields = get_object_vars($this);
-        //var_dump($fields);
         $cols = [];
         $data = [];
 
@@ -75,8 +87,6 @@ abstract class Model
             $cols[] = $name;
             $data[':' . $name] = $value;
         }
-        //var_dump($cols);
-        //var_dump($data);
 
         $sql = '
         INSERT INTO ' . static::TABLE . '
@@ -108,7 +118,7 @@ abstract class Model
         UPDATE ' . static::TABLE . '
         SET ' . implode(', ', $cols) . '
         WHERE id=:id';
-        //die;
+
 
         $db = new Db();
         $db->execute($sql, $data);
@@ -130,6 +140,5 @@ abstract class Model
         $db = new Db();
         $db->execute($sql,[':id' => $this->id]);
     }
-
 
 }
