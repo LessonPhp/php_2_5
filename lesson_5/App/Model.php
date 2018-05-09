@@ -60,17 +60,23 @@ abstract class Model
     public function fill(array $data)
     {
         $errors = new MultiException();
+
         foreach($data as $key => $value) {
-            try {
-                $this->$key = $value;
-            } catch (\Exception $e) {
-                $errors->add($e);
-            }
+            $this->$key = $value;
+        }
+
+        if(isset($errors)) {
+            $errors->add(new \Exception('Пароль слишком короткий'));
+        }
+
+        if(isset($errors)) {
+            $errors->add(new \Exception('Пароль содержит +'));
         }
 
         if(!$errors->empty()) {
             throw $errors;
         }
+
     }
 
     public function insert()

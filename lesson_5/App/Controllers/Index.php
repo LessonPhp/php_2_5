@@ -13,7 +13,6 @@ class Index extends Controller
 
         //$view = new View();
         $this->view->articles = \App\Models\Article::findAllNews();
-        // убрала echo
         $this->view->display(__DIR__ . '/../../templates/index.php');
     }
 
@@ -29,7 +28,6 @@ class Index extends Controller
 
         //$view = new View();
         $this->view->article = \App\Models\Article::findById($id);
-        // убрала echo
         $this->view->display( __DIR__ . '/../../templates/article.php');
     }
 }

@@ -5,7 +5,7 @@ namespace App;
 
 class View implements \Countable
 {
-    use TraitView;
+    use TraitV;
 
     /**
      * @param $template

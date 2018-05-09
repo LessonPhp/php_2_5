@@ -24,7 +24,6 @@ class Admin extends Controller
             $article->title = $title;
             $article->content = $content;
             $article->author_id = $author_id;
-            // исправила
             $article->save();
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;
@@ -50,7 +49,6 @@ class Admin extends Controller
             $article->title = $title;
             $article->content = $content;
             $article->author_id = $author_id;
-            // исправила
             $article->save();
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;

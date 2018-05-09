@@ -2,7 +2,6 @@
 
 namespace App\Exceptions;
 
-// сделали на уроке
 class MultiException extends \Exception
 {
     protected $errors = [];

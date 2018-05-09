@@ -2,7 +2,7 @@
 
 namespace App;
 
-
+// задание 5
 class Logger
 {
     public static function getLog(\Exception $ex)

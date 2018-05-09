@@ -3,7 +3,7 @@
 namespace App;
 
 
-trait TraitView
+trait TraitV
 {
     protected $data = [];
 

@@ -26,15 +26,25 @@ try {
     $controller->action($action);
 } catch (DbException $ex) {
     // задание 1, 2, 5
-    $getLog = Logger::getLog($ex);
+    //$getLog = Logger::getLog($ex);
     $view = new View();
     $view->errorDb = $ex->getMessage();
     $view->display(__DIR__ . '/templates/errorDb.php');
 } catch(Error404Exception $ex) {
     // задание 2, 3, 5
-    $getLog = Logger::getLog($ex);
+    //$getLog = Logger::getLog($ex);
     $view = new View();
     $view->error404 = $ex->getMessage();
     $view->display(__DIR__ . '/templates/error404.php');
+} catch(\App\Exceptions\MultiException $errors) {
+    foreach($errors->all() as $error) {
+        echo $error->getMessage();
+        echo '<br>';
+    }
+// задание 5
+} finally {
+    if(isset($ex)) {
+        $getLog = Logger::getLog($ex);
+    }
 }
 
