@@ -38,7 +38,7 @@ class Admin extends Controller
         $this->view->display(__DIR__ . '/../../admin/templates/add.php');
     }
 
-    // сохраниние модели
+    // сохранение модели
     public function actionUpdate()
     {
         if(isset($_GET['id'])) {
