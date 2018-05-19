@@ -8,6 +8,6 @@
     <title>Ошибка 404 - не найдено</title>
 </head>
 <body>
-<?php echo $this->error404; ?>
+<h3 style="text-align: center;">Ошибка 404 - не найдено</h3>
 </body>
 </html>

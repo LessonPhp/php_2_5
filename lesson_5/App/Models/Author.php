@@ -11,5 +11,4 @@ class Author extends Model
 
     public $name;
 
-    // убрала все ненужные методы
 }

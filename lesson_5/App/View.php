@@ -22,7 +22,6 @@ class View implements \Countable
 
     /**
      * @param $template
-     * @return string
      */
     public function display($template)
     {

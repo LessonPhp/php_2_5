@@ -8,6 +8,6 @@
     <title>База данных не найдена</title>
 </head>
 <body>
-<?php echo $this->errorDb; ?>
+<h3 style="text-align: center;">База данных не найдена</h3>
 </body>
 </html>

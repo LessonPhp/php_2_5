@@ -14,7 +14,7 @@ abstract class Controller
 
     public function access() : bool
     {
-        // доступ
+        // заглушка
 
         if(isset($_GET['ctrl']) && isset($_GET['action'])) {
             return true;

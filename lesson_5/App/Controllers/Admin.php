@@ -14,6 +14,7 @@ class Admin extends Controller
         $this->view->display(__DIR__ . '/../../admin/templates/index.php');
     }
 
+    // сохранение модели
     public function actionAdd()
     {
         if(isset($_POST['add'])) {
@@ -28,10 +29,16 @@ class Admin extends Controller
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;
         }
-        $view = new View();
-        $view->display(__DIR__ . '/../../admin/templates/add.php');
     }
 
+
+    // показ формы
+    public function actionViewAdd()
+    {
+        $this->view->display(__DIR__ . '/../../admin/templates/add.php');
+    }
+
+    // сохраниние модели
     public function actionUpdate()
     {
         if(isset($_GET['id'])) {
@@ -54,9 +61,20 @@ class Admin extends Controller
             die;
         }
 
-        $view = new View();
-        $view->article = \App\Models\Article::findById($id);
-        $view->display(__DIR__ . '/../../admin/templates/update.php');
+    }
+
+    // показ формы
+    public function actionViewUpdate()
+    {
+        if(isset($_GET['id'])) {
+            $id = (int)$_GET['id'];
+        } else {
+            header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
+            die;
+        }
+
+        $this->view->article = \App\Models\Article::findById($id);
+        $this->view->display(__DIR__ . '/../../admin/templates/update.php');
     }
 
     public function actionDelete()
@@ -69,8 +87,8 @@ class Admin extends Controller
             die;
         }
 
-            $article->delete();
-            header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
-            die;
+        $article->delete();
+        header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
+        die;
     }
 }

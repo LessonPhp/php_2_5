@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Db;
-use App\Exceptions\Error404Exception;
 use App\Model;
 
 class Article extends Model
@@ -27,6 +26,7 @@ class Article extends Model
                 return null;
             }
     }
+
     /**
      * @param $name
      * @return bool
@@ -39,24 +39,5 @@ class Article extends Model
         } else {
             return false;
         }
-    }
-
-    /**
-     * @return array|bool
-     * @throws Error404Exception
-     */
-    public static function findAllNews()
-    {
-        $db = new Db();
-        $sql = 'SELECT * FROM ' . self::TABLE . ' ORDER BY id DESC LIMIT 3';
-        $result = $db->query($sql,
-            [],
-            self::class);
-        // задание 3
-        if(empty($result)) {
-            throw new Error404Exception('Новости не найдены');
-        }
-        return $result;
-
     }
 }

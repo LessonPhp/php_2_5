@@ -2,9 +2,7 @@
 
 namespace App;
 
-use App\Exceptions\Error404Exception;
 use App\Exceptions\MultiException;
-use App\Models\Article;
 
 abstract class Model
 {
@@ -12,8 +10,7 @@ abstract class Model
     public $id;
 
     /**
-     * @return array|bool
-     * @throws Error404Exception
+     * @return array
      */
     public static function findAll()
     {
@@ -23,17 +20,12 @@ abstract class Model
             [],
             static::class);
 
-        // задание 3
-        if(empty($result)) {
-            throw new Error404Exception('Новости не найдены');
-        }
         return $result;
     }
 
     /**
      * @param $id
      * @return null
-     * @throws Error404Exception
      */
     public static function findById($id)
     {
@@ -44,40 +36,31 @@ abstract class Model
             static::class
         );
 
-        // задание 3
-        if(empty($result)) {
-            throw new Error404Exception('Запрашиваемая вами новость не найдена');
-        }
-
         return $result ? $result[0] : null;
     }
 
     // задание 4
+
     /**
      * @param array $data
      * @throws MultiException
      */
+
     public function fill(array $data)
     {
         $errors = new MultiException();
-
-        foreach($data as $key => $value) {
-            $this->$key = $value;
+        foreach ($data as $key => $value) {
+            try {
+                $this->$key = $value;
+            } catch (\Exception $e) {
+                $errors->add($e);
+            }
         }
-
-        if(isset($errors)) {
-            $errors->add(new \Exception('Пароль слишком короткий'));
-        }
-
-        if(isset($errors)) {
-            $errors->add(new \Exception('Пароль содержит +'));
-        }
-
         if(!$errors->empty()) {
             throw $errors;
         }
-
     }
+
 
     public function insert()
     {
@@ -93,6 +76,7 @@ abstract class Model
             $cols[] = $name;
             $data[':' . $name] = $value;
         }
+
 
         $sql = '
         INSERT INTO ' . static::TABLE . '

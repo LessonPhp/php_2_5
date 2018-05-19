@@ -19,6 +19,8 @@ class Login extends Controller
 
             $errors = new MultiException();
             $password = $_POST['password'];
+
+
             if (strlen($password) < 3) {
                 $errors->add(new \Exception('Пароль слишком короткий'));
             }
