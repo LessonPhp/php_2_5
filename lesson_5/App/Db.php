@@ -21,18 +21,31 @@ class Db
         }
     }
 
+    // добавила исключение здесь
     public function query($sql, $data=[], $class)
     {
-        $sth = $this->dbh->prepare($sql);
-        $sth->execute($data);
-        return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+        try {
+            $sth = $this->dbh->prepare($sql);
+            $sth->execute($data);
+            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+        } catch (\PDOException $ex) {
+            throw new \App\Exceptions\DbException('Ошибка в запросе');
+        }
+
     }
 
+
+    // добавила исключение здесь
     public function execute($query, $params=[])
     {
-        $sth = $this->dbh->prepare($query);
-        return $sth->execute($params);
+        try {
+            $sth = $this->dbh->prepare($query);
+            return $sth->execute($params);
+        } catch(\PDOException $ex) {
+            throw new \App\Exceptions\DbException('Ошибка в запросе');
+        }
     }
+
 
     public function getLastId()
     {

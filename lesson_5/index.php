@@ -3,10 +3,8 @@
 use App\Exceptions\DbException;
 use App\Exceptions\Error404Exception;
 use App\Logger;
-use App\View;
 
 require __DIR__ . '/autoload.php';
-
 
 $ctrl = $_GET['ctrl'] ? $_GET['ctrl'] : 'Index';
 $action = $_GET['action'] ? $_GET['action'] : 'Index';
@@ -17,19 +15,15 @@ try {
     $controller->action($action);
 } catch (DbException $ex) {
     // задание 1, 2
-    //$getLog = Logger::getLog($ex);
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('DbError');
 } catch(Error404Exception $ex) {
     // задание 2, 3
-    //$getLog = Logger::getLog($ex);
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('NotFound404');
-} catch(\App\Exceptions\MultiException $errors) {
-    foreach($errors->all() as $error) {
-        echo $error->getMessage();
-        echo '<br>';
-    }
+} catch(\App\Exceptions\ExecuteException $ex) {
+    $ctrl = new \App\Controllers\Error();
+    $ctrl->action('Execute');
     // задание 5
 } finally {
     if(isset($ex)) {

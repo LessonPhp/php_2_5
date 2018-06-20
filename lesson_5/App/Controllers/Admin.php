@@ -4,17 +4,23 @@ namespace App\Controllers;
 
 
 use App\Controller;
-use App\View;
+use App\Exceptions\Error404Exception;
+use App\Exceptions\ExecuteException;
 
 class Admin extends Controller
 {
     public function actionAdmin()
     {
         $this->view->articles = \App\Models\Article::findAll();
+        $articles = \App\Models\Article::findAll();
+
+        // задание 3
+        if(empty($articles)) {
+            throw new Error404Exception('Новости не найдены');
+        }
         $this->view->display(__DIR__ . '/../../admin/templates/index.php');
     }
 
-    // сохранение модели
     public function actionAdd()
     {
         if(isset($_POST['add'])) {
@@ -28,17 +34,16 @@ class Admin extends Controller
             $article->save();
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;
+        } else {
+            throw new ExecuteException('Запрос не может быть выполнен');
         }
     }
 
-
-    // показ формы
     public function actionViewAdd()
     {
         $this->view->display(__DIR__ . '/../../admin/templates/add.php');
     }
 
-    // сохранение модели
     public function actionUpdate()
     {
         if(isset($_GET['id'])) {
@@ -59,11 +64,12 @@ class Admin extends Controller
             $article->save();
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;
+        } else {
+            throw new ExecuteException('Запрос не может быть выполнен');
         }
 
     }
 
-    // показ формы
     public function actionViewUpdate()
     {
         if(isset($_GET['id'])) {

@@ -5,7 +5,6 @@ namespace App\Controllers;
 
 use App\Controller;
 use App\Exceptions\Error404Exception;
-use App\View;
 
 class Index extends Controller
 {
@@ -20,7 +19,6 @@ class Index extends Controller
             throw new Error404Exception('Новости не найдены');
         }
 
-        $this->view->articles = \App\Models\Article::findAll();
         $this->view->display(__DIR__ . '/../../templates/index.php');
     }
 

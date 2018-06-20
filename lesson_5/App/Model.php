@@ -50,11 +50,7 @@ abstract class Model
     {
         $errors = new MultiException();
         foreach ($data as $key => $value) {
-            try {
-                $this->$key = $value;
-            } catch (\Exception $e) {
-                $errors->add($e);
-            }
+            $this->$key = $value;
         }
         if(!$errors->empty()) {
             throw $errors;
