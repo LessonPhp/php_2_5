@@ -27,7 +27,7 @@ try {
     // задание 5
 } finally {
     if(isset($ex)) {
-        $getLog = Logger::getLog($ex);
+        Logger::getLog($ex);
     }
 }
 
