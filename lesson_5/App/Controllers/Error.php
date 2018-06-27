@@ -20,10 +20,4 @@ class Error extends Controller
         $this->view->display(__DIR__ . '/../../templates/error404.php');
     }
 
-    // запрос не может быть выполнен
-    public function actionExecute()
-    {
-        $this->view->display(__DIR__ . '/../../templates/errorExecute.php');
-    }
-
 }

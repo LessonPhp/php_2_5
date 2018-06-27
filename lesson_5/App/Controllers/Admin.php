@@ -5,7 +5,6 @@ namespace App\Controllers;
 
 use App\Controller;
 use App\Exceptions\Error404Exception;
-use App\Exceptions\ExecuteException;
 
 class Admin extends Controller
 {
@@ -34,8 +33,6 @@ class Admin extends Controller
             $article->save();
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;
-        } else {
-            throw new ExecuteException('Запрос не может быть выполнен');
         }
     }
 
@@ -64,10 +61,7 @@ class Admin extends Controller
             $article->save();
             header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
             die;
-        } else {
-            throw new ExecuteException('Запрос не может быть выполнен');
         }
-
     }
 
     public function actionViewUpdate()

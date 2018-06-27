@@ -21,9 +21,6 @@ try {
     // задание 2, 3
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('NotFound404');
-} catch(\App\Exceptions\ExecuteException $ex) {
-    $ctrl = new \App\Controllers\Error();
-    $ctrl->action('Execute');
     // задание 5
 } finally {
     if(isset($ex)) {
