@@ -16,13 +16,13 @@ class Db
                 'mysql:host=' . $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'],
                 $config->data['db']['user'],
                 $config->data['db']['password']);
-        } catch(\PDOException $ex) {
+        } catch (\PDOException $ex) {
             throw new \App\Exceptions\DbException('Нет соединения с базой данных');
         }
     }
 
     // добавила исключение здесь
-    public function query($sql, $data=[], $class)
+    public function query($sql, $data = [], $class)
     {
         try {
             $sth = $this->dbh->prepare($sql);
@@ -36,12 +36,12 @@ class Db
 
 
     // добавила исключение здесь
-    public function execute($query, $params=[])
+    public function execute($query, $params = [])
     {
         try {
             $sth = $this->dbh->prepare($query);
             return $sth->execute($params);
-        } catch(\PDOException $ex) {
+        } catch (\PDOException $ex) {
             throw new \App\Exceptions\DbException('Ошибка в запросе');
         }
     }

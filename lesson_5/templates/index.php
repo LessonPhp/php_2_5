@@ -15,12 +15,12 @@ foreach ($this->articles as $article) : ?>
     <h1 style="text-align: center;"><?php echo $article->title; ?></h1>
     <p style="text-align: justify; text-indent: 15px;"><?php echo $article->content; ?></p>
     <?php
-    if(!empty($article->author)) { ?>
+    if (!empty($article->author)) { ?>
         <p style="text-align: justify; text-indent: 15px;"><?php echo $article->author->name; ?></p>
         <?php
     } else { ?>
         <p style="text-align: justify; text-indent: 15px;">Нет автора</p>
-    <?php
+        <?php
     }
     ?>
     <a href="/lesson_5/home_work/?ctrl=Index&action=Article&id=<?php echo $article->id; ?>">читать далее</a>

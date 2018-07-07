@@ -13,7 +13,8 @@
     <input type="text" name="title" value="<?php echo $this->article->title; ?>"><br>
     <textarea name="content" style="resize: none;"><?php echo $this->article->content; ?></textarea><br>
     <input type="hidden" name="author_id" value="1">
-    <button type="submit" name="update">Обновить новость</button><br>
+    <button type="submit" name="update">Обновить новость</button>
+    <br>
     <a href="/lesson_5/home_work/?ctrl=Admin&action=Admin">Назад в админ-панель</a>
 </form>
 </body>

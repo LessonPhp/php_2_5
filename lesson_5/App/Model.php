@@ -16,7 +16,7 @@ abstract class Model
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE;
-        $result =  $db->query($sql,
+        $result = $db->query($sql,
             [],
             static::class);
 
@@ -46,13 +46,28 @@ abstract class Model
      * @throws MultiException
      */
 
+    // я использовала этот метод в админ-панели
     public function fill(array $data)
     {
         $errors = new MultiException();
-        foreach ($data as $key => $value) {
-            $this->$key = $value;
+
+        if (mb_strlen($data['title']) < 3) {
+            $errors->add(new \Exception('Заголовок слишком короткий'));
         }
-        if(!$errors->empty()) {
+
+        if (mb_strlen($data['content']) < 5) {
+            $errors->add(new \Exception('Текст слишком короткий'));
+        }
+
+        if (empty($data['author_id'])) {
+            $errors->add(new \Exception('Отсутсвует id автора'));
+        }
+
+        foreach ($data as $key => $val) {
+            $this->$key = $val;
+        }
+
+        if (!$errors->empty()) {
             throw $errors;
         }
     }
@@ -113,7 +128,7 @@ abstract class Model
 
     public function save()
     {
-        if(!isset($this->id)) {
+        if (!isset($this->id)) {
             $this->insert();
         } else {
             $this->update();
@@ -124,7 +139,7 @@ abstract class Model
     {
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
         $db = new Db();
-        $db->execute($sql,[':id' => $this->id]);
+        $db->execute($sql, [':id' => $this->id]);
     }
 
 }

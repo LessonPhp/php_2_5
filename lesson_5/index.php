@@ -17,14 +17,15 @@ try {
     // задание 1, 2
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('DbError');
-} catch(Error404Exception $ex) {
+} catch (Error404Exception $ex) {
     // задание 2, 3
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('NotFound404');
     // задание 5
 } finally {
-    if(isset($ex)) {
-        Logger::getLog($ex);
+    if (isset($ex)) {
+        $log = new Logger();
+        $log->getLog($ex);
     }
 }
 

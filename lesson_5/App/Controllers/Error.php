@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 
 use App\Controller;
+use App\Exceptions\MultiException;
 
 
 class Error extends Controller
@@ -19,5 +20,4 @@ class Error extends Controller
     {
         $this->view->display(__DIR__ . '/../../templates/error404.php');
     }
-
 }

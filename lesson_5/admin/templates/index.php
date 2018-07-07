@@ -8,19 +8,19 @@
     <title>Главная страница админ-панели</title>
 </head>
 <body>
-    <h3 style="text-align: center;">Админ-панель</h3>
-    <a href="/lesson_5/home_work/?ctrl=Admin&action=ViewAdd"><p style="text-align: center;">Добавить новость</p></a><br>
+<h3 style="text-align: center;">Админ-панель</h3>
+<a href="/lesson_5/home_work/?ctrl=Admin&action=ViewAdd"><p style="text-align: center;">Добавить новость</p></a><br>
+<?php
+foreach ($this->articles as $article) : ?>
+    <h1 style="text-align: center;"><?php echo $article->title; ?></h1>
+    <p style="text-align: center;"><?php echo $article->content; ?></p>
+    <a href="/lesson_5/home_work/?ctrl=Admin&action=ViewUpdate&id=<?php echo $article->id; ?>">
+        <p style="text-align: center;">Обновить новость</p></a><br>
+    <a href="/lesson_5/home_work/?ctrl=Admin&action=Delete&id=<?php echo $article->id; ?>">
+        <p style="text-align: center;">Удалить новость</p></a><br>
     <?php
-    foreach ($this->articles as $article) : ?>
-        <h1 style="text-align: center;"><?php echo $article->title; ?></h1>
-        <p style="text-align: center;"><?php echo $article->content; ?></p>
-        <a href="/lesson_5/home_work/?ctrl=Admin&action=ViewUpdate&id=<?php echo $article->id; ?>">
-            <p style="text-align: center;">Обновить новость</p></a><br>
-        <a href="/lesson_5/home_work/?ctrl=Admin&action=Delete&id=<?php echo $article->id; ?>">
-            <p style="text-align: center;">Удалить новость</p></a><br>
-        <?php
-    endforeach;
-    ?>
-    <a href="/lesson_5/home_work/?ctrl=Index&action=Index"><p style="text-align: center;">Назад на главную</p></a>
+endforeach;
+?>
+<a href="/lesson_5/home_work/?ctrl=Index&action=Index"><p style="text-align: center;">Назад на главную</p></a>
 </body>
 </html>
