@@ -51,11 +51,11 @@ abstract class Model
     {
         $errors = new MultiException();
 
-        if (mb_strlen($data['title']) < 3) {
+        if (strlen($data['title']) < 3) {
             $errors->add(new \Exception('Заголовок слишком короткий'));
         }
 
-        if (mb_strlen($data['content']) < 5) {
+        if (strlen($data['content']) < 5) {
             $errors->add(new \Exception('Текст слишком короткий'));
         }
 

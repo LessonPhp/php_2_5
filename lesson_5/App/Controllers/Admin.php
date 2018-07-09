@@ -25,8 +25,8 @@ class Admin extends Controller
     public function actionAdd()
     {
         if (isset($_POST['add'])) {
-            $article = new \App\Models\Article();
             try {
+                $article = new \App\Models\Article();
                 $article->fill([
                     'title' => htmlspecialchars(strip_tags(trim($_POST['title']))),
                     'content' => htmlspecialchars(strip_tags(trim($_POST['content']))),
@@ -59,8 +59,8 @@ class Admin extends Controller
         }
 
         if (isset($_POST['update'])) {
-            $article = \App\Models\Article::findById($id);
             try {
+                $article = \App\Models\Article::findById($id);
                 $article->fill([
                     'title' => htmlspecialchars(strip_tags(trim($_POST['title']))),
                     'content' => htmlspecialchars(strip_tags(trim($_POST['content']))),
