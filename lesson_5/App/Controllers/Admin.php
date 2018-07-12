@@ -30,8 +30,9 @@ class Admin extends Controller
                 $article->fill([
                     'title' => htmlspecialchars(strip_tags(trim($_POST['title']))),
                     'content' => htmlspecialchars(strip_tags(trim($_POST['content']))),
-                    'author_id' => $_POST['author_id'],
                 ]);
+                $author_id = $_POST['author_id'];
+                $article->author_id = $author_id;
                 $article->save();
                 header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
                 die;
@@ -64,8 +65,9 @@ class Admin extends Controller
                 $article->fill([
                     'title' => htmlspecialchars(strip_tags(trim($_POST['title']))),
                     'content' => htmlspecialchars(strip_tags(trim($_POST['content']))),
-                    'author_id' => $_POST['author_id'],
                 ]);
+                $author_id = $_POST['author_id'];
+                $article->author_id = $author_id;
                 $article->save();
                 header('Location: /lesson_5/home_work/?ctrl=Admin&action=Admin');
                 die;

@@ -46,7 +46,7 @@ abstract class Model
      * @throws MultiException
      */
 
-    // я использовала этот метод в админ-панели
+    // я использовала этот метод в админ-контроллере
     public function fill(array $data)
     {
         $errors = new MultiException();
@@ -55,12 +55,12 @@ abstract class Model
             $errors->add(new \Exception('Заголовок слишком короткий'));
         }
 
-        if (strlen($data['content']) < 5) {
-            $errors->add(new \Exception('Текст слишком короткий'));
+        if(false !== strpos($data['title'], '+')) {
+            $errors->add(new \Exception('Заголовок содержит +'));
         }
 
-        if (empty($data['author_id'])) {
-            $errors->add(new \Exception('Отсутсвует id автора'));
+        if (strlen($data['content']) < 5) {
+            $errors->add(new \Exception('Текст слишком короткий'));
         }
 
         foreach ($data as $key => $val) {
