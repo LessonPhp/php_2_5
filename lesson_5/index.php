@@ -21,10 +21,10 @@ try {
     // задание 2, 3
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('NotFound404');
-    // переделала
 } finally {
     if (isset($ex)) {
         $log = new Logger();
+        // исправила "получить" на "сохранить"
         $log->save($ex);
     }
 }

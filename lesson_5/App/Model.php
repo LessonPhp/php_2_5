@@ -47,6 +47,7 @@ abstract class Model
      * @param array $data
      */
 
+    // переделала
     // я использовала этот метод в админ-контроллере
     public function fill(array $data)
     {

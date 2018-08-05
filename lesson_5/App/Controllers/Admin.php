@@ -21,6 +21,7 @@ class Admin extends Controller
         $this->view->display(__DIR__ . '/../../admin/templates/index.php');
     }
 
+    // задание 4
     // использование метода fill
     public function actionAdd()
     {
