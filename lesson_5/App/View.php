@@ -3,7 +3,7 @@
 namespace App;
 
 
-class View implements \Countable
+class View
 {
     use TraitV;
 
@@ -26,10 +26,5 @@ class View implements \Countable
     public function display($template)
     {
         echo $this->render($template);
-    }
-
-    public function count()
-    {
-        return count($this->data);
     }
 }

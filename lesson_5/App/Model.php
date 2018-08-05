@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Exceptions\MultiException;
+use App\Models\Article;
 
 abstract class Model
 {
@@ -10,8 +11,9 @@ abstract class Model
     public $id;
 
     /**
-     * @return array
+     * @return array|bool
      */
+
     public static function findAll()
     {
         $db = new Db();
@@ -43,25 +45,12 @@ abstract class Model
 
     /**
      * @param array $data
-     * @throws MultiException
      */
 
     // я использовала этот метод в админ-контроллере
     public function fill(array $data)
     {
-        $errors = new MultiException();
-
-        if (strlen($data['title']) < 3) {
-            $errors->add(new \Exception('Заголовок слишком короткий'));
-        }
-
-        if(false !== strpos($data['title'], '+')) {
-            $errors->add(new \Exception('Заголовок содержит +'));
-        }
-
-        if (strlen($data['content']) < 5) {
-            $errors->add(new \Exception('Текст слишком короткий'));
-        }
+        $errors = $this->check($data);
 
         foreach ($data as $key => $val) {
             $this->$key = $val;
@@ -71,7 +60,6 @@ abstract class Model
             throw $errors;
         }
     }
-
 
     public function insert()
     {
@@ -134,6 +122,7 @@ abstract class Model
             $this->update();
         }
     }
+
 
     public function delete()
     {

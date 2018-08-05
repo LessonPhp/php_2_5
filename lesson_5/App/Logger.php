@@ -5,7 +5,7 @@ namespace App;
 // задание 5
 class Logger
 {
-    public function getLog(\Exception $ex)
+    public function save(\Exception $ex)
     {
         if (file_exists(__DIR__ . '/../log.txt') & is_readable(__DIR__ . '/../log.txt')) {
             $res = file(__DIR__ . '/../log.txt', FILE_IGNORE_NEW_LINES);

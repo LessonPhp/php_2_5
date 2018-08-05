@@ -10,7 +10,6 @@ class Index extends Controller
 {
     public function actionIndex()
     {
-
         $this->view->articles = \App\Models\Article::findAll();
         $articles = \App\Models\Article::findAll();
 

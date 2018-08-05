@@ -21,11 +21,11 @@ try {
     // задание 2, 3
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('NotFound404');
-    // задание 5
+    // переделала
 } finally {
     if (isset($ex)) {
         $log = new Logger();
-        $log->getLog($ex);
+        $log->save($ex);
     }
 }
 

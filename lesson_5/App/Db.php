@@ -9,7 +9,6 @@ class Db
 
     public function __construct()
     {
-
         $config = new \App\Config();
         try {
             $this->dbh = new \PDO(
@@ -21,29 +20,17 @@ class Db
         }
     }
 
-    // добавила исключение здесь
     public function query($sql, $data = [], $class)
     {
-        try {
-            $sth = $this->dbh->prepare($sql);
-            $sth->execute($data);
-            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
-        } catch (\PDOException $ex) {
-            throw new \App\Exceptions\DbException('Ошибка в запросе');
-        }
-
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($data);
+        return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
-
-    // добавила исключение здесь
     public function execute($query, $params = [])
     {
-        try {
-            $sth = $this->dbh->prepare($query);
-            return $sth->execute($params);
-        } catch (\PDOException $ex) {
-            throw new \App\Exceptions\DbException('Ошибка в запросе');
-        }
+        $sth = $this->dbh->prepare($query);
+        $sth->execute($params);
     }
 
 
