@@ -92,6 +92,7 @@ class Admin extends Controller
         $this->view->display(__DIR__ . '/../../admin/templates/update.php');
     }
 
+
     public function actionDelete()
     {
         if (isset($_GET['id'])) {

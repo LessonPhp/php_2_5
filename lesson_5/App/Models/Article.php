@@ -42,13 +42,11 @@ class Article extends Model
         }
     }
 
-
+    // задание 4
     /**
      * @param $data
      * @return MultiException
      */
-
-    // задание 4
     public function check($data)
     {
         $errors = new MultiException();
@@ -57,7 +55,7 @@ class Article extends Model
             $errors->add(new \Exception('Заголовок слишком короткий'));
         }
 
-        // этот пример ошибки - искусственный, для демонстрации метода fill
+        // этот пример ошибки - искусственный, для демонстрации мультиисключения
         if (false !== strpos($data['title'], '~')) {
             $errors->add(new \Exception('Заголовок содержит знак тильда'));
         }

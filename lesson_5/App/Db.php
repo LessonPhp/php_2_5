@@ -27,10 +27,15 @@ class Db
         return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
+    // исправила
     public function execute($query, $params = [])
     {
         $sth = $this->dbh->prepare($query);
-        $sth->execute($params);
+        if (true === $sth->execute($params)) {
+            return true;
+        } else {
+            throw new \App\Exceptions\DbException('Ошибка в запросе');
+        }
     }
 
 
