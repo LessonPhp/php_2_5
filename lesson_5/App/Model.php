@@ -41,13 +41,11 @@ abstract class Model
         return $result ? $result[0] : null;
     }
 
-    // задание 4
-
     /**
      * @param array $data
      */
 
-    // переделала
+    // задание 4
     // я использовала этот метод в админ-контроллере
     public function fill(array $data)
     {
