@@ -22,7 +22,7 @@ try {
     $ctrl = new \App\Controllers\Error();
     $ctrl->action('NotFound404');
 } finally {
-    if (isset($ex)) {
+    if (!empty($ex)) {
         $log = new Logger();
         // исправила "получить" на "сохранить"
         $log->save($ex);
